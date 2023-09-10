@@ -1,0 +1,2 @@
+alias f-lg="gsettings set org.gnome.desktop.interface text-scaling-factor 1.8"
+alias f-sm="gsettings set org.gnome.desktop.interface text-scaling-factor 1.2"
