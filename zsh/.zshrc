@@ -108,7 +108,7 @@ export PATH=$PATH:/home/eran-local/.cargo/bin:/home/eran-local/.local/share/bob/
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 source ~/.zsh_profile
-source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.theme
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(direnv hook zsh)"
 
