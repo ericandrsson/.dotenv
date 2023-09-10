@@ -2,7 +2,7 @@
 
 # Setting up STOW_FOLDERS and DOTFILES variables
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="zsh"
+    STOW_FOLDERS="zsh, aliases"
 fi
 
 if [[ -z $DOTFILES ]]; then
