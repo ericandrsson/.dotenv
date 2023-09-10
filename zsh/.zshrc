@@ -108,21 +108,10 @@ export PATH=$PATH:/home/eran-local/.cargo/bin:/home/eran-local/.local/share/bob/
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 source ~/.zsh_profile
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.theme
 
-alias nv="nvim ~/ssh-mounted/users/eran/"
-alias ssh-mount="sshfs eran@rez-release.ilpvfx.hq:/ ~/ssh-mounted"
 eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#alias ha='ssh eran@homeassistant'
-#alias wg-enable='sudo wg-quick up wg0'
-#alias wg-disable='sudo wg-quick down wg0'
-
-#alias d='cd ~/dev'
-#alias sshx="ssh -X rez-release.ilpvfx.hq"
-
-#alias f-lg="gsettings set org.gnome.desktop.interface text-scaling-factor 1.8"
-#alias f-sm="gsettings set org.gnome.desktop.interface text-scaling-factor 1.2"
