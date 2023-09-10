@@ -81,8 +81,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-export PATH=$PATH:/home/eran-local/.cargo/bin:/home/eran-local/.local/share/bob/nvim-bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
