@@ -1,9 +1,9 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-pushd $DOTFILES
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-do
+pushd "$DOTFILES" > /dev/null
+IFS=' ' read -ra FOLDERS <<< "$STOW_FOLDERS"
+for folder in "${FOLDERS[@]}"; do
     echo "Removing $folder"
-    stow -D $folder
+    stow -D "$folder"
 done
-popd
+popd > /dev/null
