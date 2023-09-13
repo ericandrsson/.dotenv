@@ -2,7 +2,7 @@
 
 # Setting up STOW_FOLDERS and DOTFILES variables
 if [ -z "$STOW_FOLDERS" ]; then
-    STOW_FOLDERS="bin zsh aliases i3 tmux"
+    STOW_FOLDERS="bin zsh aliases i3 tmux nvim"
 fi
 
 if [ -z "$DOTFILES" ]; then
