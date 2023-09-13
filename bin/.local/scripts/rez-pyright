@@ -1,0 +1,120 @@
+#!/bin/bash
+
+REZ_COMMAND="${REZ_COMMAND:-rez}" # Use rez by default if REZ_COMMAND is not set
+
+# Argument Parsing
+while getopts ":r:p:" opt; do
+    case ${opt} in
+        r) 
+            ROOT="$OPTARG"
+            ;;
+        p) 
+            PREPEND_PATH="$OPTARG"
+            ;;
+        \?) 
+            echo "Usage: cmd [-r root_directory] [-p prepend_path]"
+            exit 1
+            ;;
+    esac
+done
+
+if [[ -z "$ROOT" ]]; then
+    echo "Error: root directory not specified."
+    echo "Usage: cmd [-r root_directory] [-p prepend_path]"
+    exit 1
+fi
+
+
+PYRIGHT_CONFIG="$ROOT/pyrightconfig.json"
+
+if [[ -z "$ROOT" ]]; then
+    echo "Error: root directory not specified."
+    exit 1
+fi
+
+function getContextFromVariant {
+    local variant_path="$1"
+    local rez_command="rez"  # Assuming rez is in your $PATH
+
+    # Execute rez command and save the output
+    local raw_output=$($rez_command context -i -f json "$variant_path/build.rxt")
+
+    # Return the output. In bash, you can either echo it or process it further
+    echo "$raw_output"
+}
+
+getVariantInfo() {
+    local root=$1
+    local variant_file="$root/variant.json"
+    if [[ -f "$variant_file" ]]; then
+        local index=$(jq -r '.index' "$variant_file")
+        local data=$(jq -r '.data | join("/")' "$variant_file")
+        echo "$index $data"
+    else
+        echo "Error: $variant_file not found."
+        exit 1
+    fi
+}
+
+
+
+OUTPUT=$($REZ_COMMAND build -c -s)
+
+# Extract the relevant lines from the command output
+VARIANT_PATHS=()
+CAPTURE=false
+while IFS= read -r line; do
+    if [[ "$line" == "The following executable script(s) have been created:" ]]; then
+        CAPTURE=true
+        continue
+    fi
+    if [[ "$CAPTURE" == true && "$line" =~ ^$ROOT ]]; then
+        VARIANT_PATHS+=( "$(dirname "$line")" )
+    fi
+done <<< "$OUTPUT"
+
+# Create the variants map
+declare -A VARIANTS
+
+if [ ${#VARIANT_PATHS[@]} -eq 1 ]; then
+    VARIANTS["default"]="${VARIANT_PATHS[0]}"
+else
+    for VARIANT_PATH in "${VARIANT_PATHS[@]}"; do
+        INFO=$(getVariantInfo "$VARIANT_PATH")
+        INDEX=$(echo "$INFO" | cut -f1 -d' ')
+        NAME=$(echo "$INFO" | cut -f2 -d' ')
+        VARIANTS["$NAME"]="$VARIANT_PATH"
+    done
+fi
+
+# if len of variants is greater than 1, prompt user to pick one 
+if [ ${#VARIANTS[@]} -gt 1 ]; then
+    echo "Multiple variants found. Please select one:"
+    select VARIANT in "${!VARIANTS[@]}"; do
+        if [[ -n "$VARIANT" ]]; then
+            break
+        fi
+    done
+else
+    VARIANT="default"
+fi
+
+CONTEXT=$(getContextFromVariant "${VARIANTS[$VARIANT]}")
+PYTHONPATH=$(echo "$CONTEXT" | jq -r '.PYTHONPATH')
+
+contextPaths=( $(echo "$CONTEXT" | jq -r ".PYTHONPATH | split(\":\")[]") ) # Extract paths from $CONTEXT
+
+# Check if PREPEND_PATH is provided and if so, prepend it to every path
+if [[ -n "$PREPEND_PATH" ]]; then
+    for i in "${!contextPaths[@]}"; do
+        contextPaths[$i]="$PREPEND_PATH${contextPaths[$i]}"
+    done
+fi
+
+# Convert contextPaths array to JSON array string
+jsonPaths=$(printf '%s\n' "${contextPaths[@]}" | jq -R . | jq -s .)
+
+# Update or create pyrightconfig.json
+PYRIGHT_CONFIG="./pyrightconfig.json" # adjust the path if needed
+echo "{ \"extraPaths\": $jsonPaths } " > "$PYRIGHT_CONFIG"
+

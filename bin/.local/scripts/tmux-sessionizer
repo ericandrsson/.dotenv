@@ -3,7 +3,10 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/work ~/personal ~/dev ~/production/users/eran/dev -mindepth 1 -maxdepth 1 -type d | fzf)
+    # Combine all directories and subdirectories of project-* into one find command
+    selected=$(find ~/ ~/work ~/personal ~/dev ~/production/users/eran/dev \
+                $(find ~/production/users/eran/dev -mindepth 1 -maxdepth 1 -type d -name "project-*") \
+                -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
