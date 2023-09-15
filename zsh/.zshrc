@@ -1,12 +1,9 @@
 #!/bin/sh
 
-# adds useful functions
-source "$HOME/.zsh-functions"
-
 # source relevant files
+source ".zsh-functions"
 zsh_add_file ".zsh-exports"
 zsh_add_file ".zsh-aliases"
-zsh_add_file ".zsh-vim-mode"
 zsh_add_file ".zsh-ansible"
 
 # keybindings
