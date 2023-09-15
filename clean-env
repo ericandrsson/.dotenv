@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-pushd "$DOTFILES" > /dev/null
-IFS=' ' read -ra FOLDERS <<< "$STOW_FOLDERS"
-for folder in "${FOLDERS[@]}"; do
-    echo "Removing $folder"
-    stow -D "$folder"
-done
-popd > /dev/null
