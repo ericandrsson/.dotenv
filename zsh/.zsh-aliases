@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# vim
+alias v='nvim'
+
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -19,3 +22,6 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5'
 
 # get top process eating cpu
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+
+# to see all files
+alias ll='ls -la'
