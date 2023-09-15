@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # adds useful functions
-source "$ZDOTDIR/zsh-functions"
+source "$HOME/.zsh-functions"
 
 # source relevant files
 zsh_add_file ".zsh-exports"
