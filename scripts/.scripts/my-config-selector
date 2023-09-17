@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Hardcoded config paths
+configs=(
+"$HOME/.bashrc"
+"$DOTFILESDIR/i3/.config/i3/config"
+"$DOTFILESDIR/nvim"
+"$DOTFILESDIR/zsh/.zshrc"
+"$DOTFILESDIR/zsh/.zshenv"
+"$DOTFILESDIR/zsh/.zsh_aliases"
+"$DOTFILESDIR/zsh/.zsh_exports"
+"$DOTFILESDIR/zsh/.zsh_functions"
+"$DOTFILESDIR/zsh/.zsh_plugins"
+"$DOTFILESDIR/polybar/.config/polybar/config.ini"
+"$DOTFILESDIR/starship/starship.toml"
+"$DOTFILESDIR/tmux/.tmux.conf"
+"$DOTFILESDIR/picom/.config/picom.conf"
+"$DOTFILESDIR/scripts/.scripts/my-config-selector"
+"$DOTFILESDIR/install"
+# ... (add more config paths as needed)
+)
+
+# Displaying options in fzf and getting the selection
+choice=$(printf '%s\n' "${configs[@]}" | fzf --prompt 'Edit config: ')
+
+# Check if an option was selected
+if [ "$choice" ]; then
+    nvim "$choice"
+else
+    echo "No selection made."
+    exit 0
+fi

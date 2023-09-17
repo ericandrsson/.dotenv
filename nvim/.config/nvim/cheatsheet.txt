@@ -29,7 +29,7 @@ Delete without overwrite (normal & visual) | <leader>d
 Exit insert mode | i<C-c>
 Disable Ex mode | Q
 Disable command-line mode's ':' history | q:
-Open new tmux window with 'tmux-sessionizer' | <C-f>
+Open new tmux window with 'my-tmux-sessionizer' | <C-f>
 Format code using LSP | <leader>f
 Navigate to next compiler error | <C-k>
 Navigate to previous compiler error | <C-j>

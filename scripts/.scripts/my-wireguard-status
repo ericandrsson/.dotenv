@@ -1,0 +1,28 @@
+#!/bin/bash
+
+green="#55aa55"
+red="#aa5555"
+
+check_vpn_status() {
+    connected_interface=$(networkctl | grep -P "\d+ .* wireguard routable" -o | cut -d" " -f2)
+    if [[ $connected_interface == "wg0" ]]; then
+        echo "%{F$green} ILP%{F-}"
+    else
+        echo "%{F$red} ILP%{F-}"
+    fi
+}
+
+toggle_vpn() {
+    connected_interface=$(networkctl | grep -P "\d+ .* wireguard routable" -o | cut -d" " -f2)
+    if [[ $connected_interface == "wg0" ]]; then
+        sudo wg-quick down wg0
+    else
+        sudo wg-quick up wg0
+    fi
+}
+
+if [[ "$1" == "--toggle" ]]; then
+    toggle_vpn
+else
+    check_vpn_status
+fi

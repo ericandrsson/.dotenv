@@ -10,9 +10,14 @@ source "$ZDOTDIR/.zsh-aliases"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
+
+# disables vim mode
+bindkey -e
+
 # keybindings
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^e 'nvim .^M'
+bindkey -s ^f "my-tmux-sessionizer\n"
+# bindkey -s ^Fc "my-config-selector\n"
+bindkey -s ^e  "nvim .^M"
 
 # saves history
 HISTFILE=$ZDOTDIR/.zsh-history

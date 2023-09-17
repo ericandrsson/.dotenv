@@ -46,8 +46,8 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Disable the Q command in normal mode (often used for Ex mode)
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "q:", "<NOP>")
--- Open a new tmux window using 'tmux-sessionizer'
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- Open a new tmux window using 'my-tmux-sessionizer'
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww my-tmux-sessionizer<CR>")
 -- Format code using LSP in normal mode
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
