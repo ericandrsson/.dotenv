@@ -1,11 +1,24 @@
 #!/usr/bin/env bash
 
+# Define an array of folder prefixes
+folder_prefixes=("project-" "BASE-" "MS-" "VFX-")
+
+# Convert the array into a find-compatible expression
+find_expr=""
+for prefix in "${folder_prefixes[@]}"; do
+    if [ -z "$find_expr" ]; then
+        find_expr="-name \"$prefix*\""
+    else
+        find_expr="$find_expr -o -name \"$prefix*\""
+    fi
+done
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # Combine all directories and subdirectories of project-* into one find command
-    selected=$(find ~/ ~/work ~/personal ~/dev ~/production/users/eran/dev \
-                $(find ~/production/users/eran/dev -mindepth 1 -maxdepth 1 -type d -name "project-*") \
+    # Combine all directories and subdirectories based on the specified prefixes
+    selected=$(find ~/work ~/personal ~/dev ~/work_remote \
+                $(eval find ~/work_remote -mindepth 1 -maxdepth 1 -type d \( $find_expr \)) \
                 -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 

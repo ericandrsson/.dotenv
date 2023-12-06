@@ -2,14 +2,6 @@ local lsp = require('lsp-zero').preset({})
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-  'jsonls',
-  'pyright',
-  'lua_ls',
-  'rust_analyzer',
-  'gopls',
-})
-
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 

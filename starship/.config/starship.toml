@@ -100,7 +100,7 @@ threshold = 20
 [cmake]
 # disabled = true
 # symbol = "卑" # alternate
-symbol = "喝"
+symbol = "🔧"
 # style = "bg:#064F8D fg:#EEEEEE"
 # format = "[[](bg:#064F8D fg:#464347)$symbol$version[](bg:#464347 fg:#064F8D)]($style)"
 
@@ -136,7 +136,7 @@ symbol = " " # original
 
 [directory]
 style = "fg:#bd93f9"
-read_only = ""
+read_only = " "
 read_only_style = "fg:#ff5555"
 truncation_length = 4
 truncate_to_repo = true
@@ -232,15 +232,15 @@ am_or_rebase = "am/rebase"
 # disabled = true
 # style = "bg:#E0B25D fg:#000000"
 stashed = " ${count}"
-ahead = "ﲗ ${count}"
-behind = "ﲔ ${count}"
-diverged = "李 ${ahead_count} ${behind_count}"
-conflicted = "${count}"
-deleted = " ${count}"
-renamed = "﫦${count}"
-modified = " 凜${count}"
-staged = "  ${count}"
-untracked = "  ${count}"
+ahead = "⇡ ${count}"
+behind = "⇣ ${count}"
+diverged = "⇕ ${ahead_count} ${behind_count}"
+conflicted = "✖ {count}"
+deleted = " ${count}"
+renamed = "🔀 ${count}"
+modified = "✏️  ${count}"
+staged = "● ${count}"
+untracked = "❓ ${count}"
 # format = "([[](bg:#E0B25D fg:#464347)$stashed$staged$modified$renamed$untracked$deleted$conflicted$ahead_behind[](bg:#464347 fg:#E0B25D)]($style))"
 
 [golang]
