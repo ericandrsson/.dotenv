@@ -22,7 +22,7 @@ vim.opt.nu = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-vim.opt.completeopt = "menuone,noselect,noinsert"
+-- vim.opt.completeopt = "menuone,noselect,noinsert"
 vim.opt.updatetime = 50
 
 -- Behaviour
