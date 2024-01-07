@@ -27,6 +27,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
+				"gopls",
 				"tsserver",
 				"html",
 				"cssls",
@@ -44,6 +45,7 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
+				"gofumpt", -- go formatter
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"isort", -- python formatter

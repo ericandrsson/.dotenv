@@ -75,6 +75,7 @@ return {
 		lspconfig["html"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "html", "gohtml" }, -- Add your custom filetype
 		})
 
 		-- configure typescript server with plugin
@@ -93,6 +94,7 @@ return {
 		lspconfig["tailwindcss"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "html", "gohtml", "css", "javascript", "typescript" }, -- Add your custom filetype
 		})
 
 		-- configure svelte server
@@ -110,6 +112,12 @@ return {
 					end,
 				})
 			end,
+		})
+
+		-- configure go server
+		lspconfig["gopls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
 		})
 
 		-- configure prisma orm server

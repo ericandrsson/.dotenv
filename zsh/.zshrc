@@ -23,3 +23,8 @@ bindkey -s ^e  "nvim .^M"
 HISTFILE=$ZDOTDIR/.zsh-history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+# completion 
+autoload -Uz compinit
+compinit
+source <(kubectl completion zsh)
