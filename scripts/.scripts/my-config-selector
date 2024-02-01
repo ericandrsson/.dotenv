@@ -4,7 +4,7 @@
 configs=(
 "$HOME/.bashrc"
 "$DOTFILESDIR/i3/.config/i3/config"
-"$DOTFILESDIR/nvim"
+"$DOTFILESDIR/nvim/.config/nvim/lua/user/init.lua"
 "$DOTFILESDIR/zsh/.zshrc"
 "$DOTFILESDIR/zsh/.zshenv"
 "$DOTFILESDIR/zsh/.zsh_aliases"
@@ -22,10 +22,16 @@ configs=(
 
 # Displaying options in fzf and getting the selection
 choice=$(printf '%s\n' "${configs[@]}" | fzf --prompt 'Edit config: ')
-
 # Check if an option was selected
 if [ "$choice" ]; then
-    nvim "$choice"
+    # Extract the directory path from the selected file path
+    dir_path=$(dirname "$choice")
+
+    # Change to the directory containing the config file
+    cd "$dir_path" || exit 1
+
+    # Open the configuration file in Neovim
+    nvim "$(basename "$choice")"
 else
     echo "No selection made."
     exit 0

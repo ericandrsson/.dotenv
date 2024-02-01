@@ -38,6 +38,9 @@ local M = {
 		{
 			"roobert/tailwindcss-colorizer-cmp.nvim",
 		},
+		{
+			"rafamadriz/friendly-snippets",
+		},
 	},
 	event = "InsertEnter",
 }
@@ -299,15 +302,15 @@ function M.config()
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = false,
 		},
-		view = {
-			entries = {
-				name = "custom",
-				selection_order = "top_down",
-			},
-			docs = {
-				auto_open = false,
-			},
-		},
+		-- view = {
+		-- 	entries = {
+		-- 		name = "custom",
+		-- 		selection_order = "top_down",
+		-- 	},
+		-- 	docs = {
+		-- 		auto_open = false,
+		-- 	},
+		-- },
 		window = {
 			completion = {
 				border = "rounded",

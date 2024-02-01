@@ -62,3 +62,9 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
+-- Toggle wrap
+vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>")
+
+vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", {desc = "Dismiss Noice Message"})
+

@@ -1,6 +1,5 @@
 local M = {
 	"nvim-tree/nvim-tree.lua",
-	event = "VeryLazy",
 }
 
 function M.config()
@@ -29,9 +28,10 @@ function M.config()
 
 	require("nvim-tree").setup({
 		on_attach = my_on_attach,
-		hijack_netrw = false,
+		hijack_netrw = true,
 		sync_root_with_cwd = true,
 		view = {
+			adaptive_size = true,
 			relativenumber = true,
 		},
 		renderer = {

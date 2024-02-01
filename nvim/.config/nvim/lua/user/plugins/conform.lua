@@ -21,18 +21,18 @@ function M.config()
 			lua = { "stylua" },
 			python = { "isort", "black", "ruff_fix", "ruff_format" },
 		},
-		format_on_save = {
-			lsp_fallback = true,
-			async = false,
-			timeout_ms = 1000,
-		},
+		-- format_on_save = {
+		-- 	lsp_fallback = true,
+		-- 	async = false,
+		-- 	timeout_ms = 5000,
+		-- },
 	})
 
-	vim.keymap.set({ "n", "v" }, "<leader>f", function()
+	vim.keymap.set({ "n", "v" }, "<leader>fd", function()
 		conform.format({
 			lsp_fallback = true,
 			async = false,
-			timeout_ms = 1000,
+			timeout_ms = 5000,
 		})
 	end, { desc = "Format file or range (in visual mode)" })
 end

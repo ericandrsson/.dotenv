@@ -15,8 +15,8 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 bindkey -e
 
 # keybindings
-bindkey -s ^f "my-tmux-sessionizer\n"
-# bindkey -s ^Fc "my-config-selector\n"
+bindkey -s ^fp "my-tmux-sessionizer\n"
+bindkey -s ^fc "my-config-selector\n"
 bindkey -s ^e  "nvim .^M"
 
 # saves history
