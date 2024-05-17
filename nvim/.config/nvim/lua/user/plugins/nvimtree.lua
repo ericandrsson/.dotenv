@@ -1,8 +1,17 @@
 local M = {
 	"nvim-tree/nvim-tree.lua",
+  -- version= "*",
+  commit= "b8c3a23",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
 }
 
 function M.config()
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
 	local wk = require("which-key")
 	wk.register({
 		["<leader>e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
@@ -22,6 +31,7 @@ function M.config()
 		vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
 		vim.keymap.del("n", "<C-k>", { buffer = bufnr })
 		vim.keymap.set("n", "<S-k>", api.node.open.preview, opts("Open Preview"))
+		vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 	end
 
 	local icons = require("user.plugins.icons")
@@ -30,9 +40,12 @@ function M.config()
 		on_attach = my_on_attach,
 		hijack_netrw = true,
 		sync_root_with_cwd = true,
+		actions = { change_dir = { enable = false } },
 		view = {
 			adaptive_size = true,
 			relativenumber = true,
+			side = "right",
+			signcolumn = "no",
 		},
 		renderer = {
 			add_trailing = false,
@@ -85,7 +98,7 @@ function M.config()
 			symlink_destination = true,
 		},
 		update_focused_file = {
-			enable = true,
+			enable = false,
 			debounce_delay = 15,
 			update_root = true,
 			ignore_list = {},

@@ -1,6 +1,6 @@
 -- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
 
 -- Tab / Identation
 vim.opt.tabstop = 2
@@ -42,7 +42,3 @@ vim.opt.guicursor =
 vim.opt.encoding = "UTF-8"
 vim.opt.showmode = false
 vim.o.clipboard = "unnamedplus"
-
--- Disable netrw
-vim.g.netrw_liststyle = 3
-vim.g.netrw_banner = 0

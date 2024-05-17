@@ -2,3 +2,5 @@ zsh/.zsh-ansible
 zsh/plugins*
 zsh/.zcompdump*
 zsh/.zsh-history
+
+pyrightconfig.json

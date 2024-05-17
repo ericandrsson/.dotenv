@@ -1,5 +1,6 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
+command_timeout = 10000
 
 # Order of modules on prompt
 format = """

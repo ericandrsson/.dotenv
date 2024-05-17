@@ -18,6 +18,8 @@ bindkey -e
 bindkey -s ^fp "my-tmux-sessionizer\n"
 bindkey -s ^fc "my-config-selector\n"
 bindkey -s ^e  "nvim .^M"
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # saves history
 HISTFILE=$ZDOTDIR/.zsh-history
