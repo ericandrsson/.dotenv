@@ -19,7 +19,7 @@ bindkey -s ^fp "my-tmux-sessionizer\n"
 bindkey -s ^fc "my-config-selector\n"
 bindkey -s ^e  "nvim .^M"
 bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[2;5D" backward-word
 
 # saves history
 HISTFILE=$ZDOTDIR/.zsh-history
@@ -30,3 +30,4 @@ SAVEHIST=1000000
 autoload -Uz compinit
 compinit
 source <(kubectl completion zsh)
+

@@ -66,5 +66,24 @@ end)
 -- Toggle wrap
 vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>")
 
-vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", {desc = "Dismiss Noice Message"})
+vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
 
+-- OBSIDIAN
+-- navigate to vault
+vim.keymap.set("n", "<leader>oo", ":cd $OBSIDIAN_VAULT_PATH<cr>")
+--
+-- convert note to template and remove leading white space
+vim.keymap.set("n", "<leader>on", ":ObsidianTemplate note<cr> :lua vim.cmd([[3,/^\\S/s/^\\n\\{1,}//]])<cr>")
+-- strip date from note title and replace dashes with spaces
+-- must have cursor on title
+vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
+--
+-- search for files in full vault
+vim.keymap.set("n", "<leader>off", ':Telescope find_files search_dirs={"$OBSIDIAN_VAULT_PATH/notes"}<cr>')
+vim.keymap.set("n", "<leader>oft", ':Telescope live_grep search_dirs={"$OBSIDIAN_VAULT_PATH/notes"}<cr>')
+
+-- for review workflow
+-- move file in current buffer to zettelkasten folder
+vim.keymap.set("n", "<leader>ok", ":!mv '%:p' $OBSIDIAN_VAULT_PATH/notes/<cr>:bd<cr>")
+-- delete file in current buffer
+vim.keymap.set("n", "<leader>od", ":!rm '%:p'<cr>:bd<cr>")

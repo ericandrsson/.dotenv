@@ -45,7 +45,7 @@ format = """
         # $terraform\
         # $zig\
         # (↑ Toolchain version modules ↑)\
-        # (↓ Package modules ↓)\
+        # ( Package modules ↓)\
         # $helm\
         # $package\
         # $cmake\
@@ -230,19 +230,19 @@ am_or_rebase = "am/rebase"
 # format = '\([[](bg:#E0B25D fg:#464347)$state($progress_current/$progress_total)[](bg:#464347 fg:#E0B25D)]($style)\)'
 
 [git_status]
-# disabled = true
+disabled = true
 # style = "bg:#E0B25D fg:#000000"
-stashed = " ${count}"
-ahead = "⇡ ${count}"
-behind = "⇣ ${count}"
-diverged = "⇕ ${ahead_count} ${behind_count}"
-conflicted = "✖ {count}"
-deleted = " ${count}"
-renamed = "🔀 ${count}"
-modified = "✏️  ${count}"
-staged = "● ${count}"
-untracked = "❓ ${count}"
-# format = "([[](bg:#E0B25D fg:#464347)$stashed$staged$modified$renamed$untracked$deleted$conflicted$ahead_behind[](bg:#464347 fg:#E0B25D)]($style))"
+stashed = "📦 "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+conflicted = "✖ "
+deleted = "🗑 "
+renamed = "📝 "
+modified = "📝 "
+staged = "✓ "
+untracked = "? "
+format = """$all_status$ahead_behind"""
 
 [golang]
 # disabled = true
@@ -283,7 +283,7 @@ symbol = " "
 # format = "[[](bg:#4063D8 fg:#464347)$symbol$version[](bg:#464347 fg:#4063D8)]($style)"
 
 [kubernetes]
-disabled = false
+disabled = true
 symbol = "☸︎ "
 # style = "bg:#3371E3 fg:#EEEEEE"
 # format = '[[](bg:#3371E3 fg:#464347)$symbol$context(\($namespace\))[](bg:#464347 fg:#3371E3)]($style)'
@@ -320,7 +320,7 @@ pure_msg = '[\(pure\)](bg:#27385D fg:#AFD700)'
 
 [nodejs]
 # disabled = true
-symbol = " "
+symbol = " "
 # style = "bg:#005F00 fg:#EEEEEE"
 # format = "[[](bg:#005F00 fg:#464347)$symbol$version[](bg:#464347 fg:#005F00)]($style)"
 

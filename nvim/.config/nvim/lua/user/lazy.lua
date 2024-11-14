@@ -21,6 +21,6 @@ require("lazy").setup {
     change_detection = {
         enbaled=true,
         notify=false,
-                        },
-    }
+    },
+}
 

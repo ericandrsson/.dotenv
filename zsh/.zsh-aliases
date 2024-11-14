@@ -2,6 +2,7 @@
 
 # vim
 alias v='nvim'
+alias vim='nvim'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -25,3 +26,9 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 
 # to see all files
 alias ll='ls -la'
+
+
+# Obsidian
+alias oo='cd $OBSIDIAN_VAULT_PATH'
+alias or='vim $OBSIDIAN_VAULT_PATH/inbox/*.md'
+# alias ou='cd $HOME/notion-obsidian-sync-zazencodes && node batchUpload.js --lastmod-days-window 5'
